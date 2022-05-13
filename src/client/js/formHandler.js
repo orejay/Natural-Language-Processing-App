@@ -1,6 +1,9 @@
-function handleSubmit(event) {
-    event.preventDefault()
+import { checkForName } from './nameChecker'
 
+const subBtn = document.getElementById('sub-btn')
+
+const events = subBtn.addEventListener('click', function (event) {
+    event.preventDefault()
     // check what text was put into the form field
     let formText = document.getElementById('name').value
     checkForName(formText)
@@ -11,6 +14,10 @@ function handleSubmit(event) {
     .then(function(res) {
         document.getElementById('results').innerHTML = res.message
     })
-}
+})
 
-export { handleSubmit }
+
+
+console.log('hi')
+
+export { events }
