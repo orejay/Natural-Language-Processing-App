@@ -1,37 +1,44 @@
 import { checkForName } from './nameChecker'
 
 const subBtn = document.getElementById('sub-btn')
+const agreement = document.getElementById('agreement')
+const confidence = document.getElementById('confidence')
+const irony = document.getElementById('irony')
 
 const events = subBtn.addEventListener('click', function (event) {
     event.preventDefault()
     // check what text was put into the form field
     let formText = document.getElementById('name').value
     console.log("::: Form Submitted :::")
-    postUrl('http://localhost:8081/source', {url: formText})
-    .then(populate(resultData))
+    postUrl('http://localhost:8080/source', {url: formText})
+    .then((resultData) =>{
+                    updateUi(resultData)
+                });
 })
 
 const postUrl = async(url="", data={}) => {
-    console.log('hi')
+    const response = await fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
     try{
-        const response = await fetch(url, {
-            method: 'POST',
-            credentials: 'same-origin',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        const resultData = await response.json()
-        return resultData
+        const resultData = await response.json();
+        console.log('Data received:', resultData)
+        return resultData;
     }catch(error){
         console.log('could not reach url', error)
     }
 }
 
-const populate = async (resultData) => {
+const updateUi = async (resultData) => {
     console.log(resultData)
+    agreement.innerText = resultData.agreement
+    confidence.innerText = resultData.confidence
+    irony.innerText = resultData.irony
 }
 
 export { events }

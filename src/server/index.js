@@ -25,11 +25,9 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve('dist/index.html'))
 })
 
-let source = []
-
 //RECIEVE URL FROM CLIENT
 app.post('/source', async function(req, res){
-    source = req.body.url
+    let source = req.body.url
     console.log(source)
     const apiUrl = `${baseUrl}key=${apiKey}&url=${source}&lang=en`
     console.log(apiUrl)
@@ -42,8 +40,8 @@ app.post('/source', async function(req, res){
 
 
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-    console.log('Example app listening on port 8081!')
+app.listen(8080, function () {
+    console.log('Example app listening on port 8080!')
 })
 
 app.get('/test', function (req, res) {
