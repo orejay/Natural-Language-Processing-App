@@ -1,5 +1,43 @@
+$headfont: "Abril Fatface",
+sans-serif;
+
 header {
-    display: flex;
-    justify-content: space-between;
+    grid-area: head;
+    // display: grid;
+    // grid-template-areas: "logo header";
+    // grid-template-columns: 20% 80%;
     padding: 10px 40px;
+    background-color: aliceblue;
+    height: 100%;
+}
+
+.header {
+    display: grid;
+    grid-template-areas: "logo header";
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 100%;
+    height: 100%;
+}
+
+#logo-div {
+    grid-area: logo;
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
+    margin-left: 1em;
+    align-items: center;
+}
+
+#logo {
+    width: 60%;
+}
+
+.head {
+    grid-area: header;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 1em;
+    align-items: center;
+    font-size: 2.2em;
+    font-family: $headfont;
 }

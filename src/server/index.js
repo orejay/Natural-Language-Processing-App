@@ -25,6 +25,10 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve('dist/index.html'))
 })
 
+app.get('/logo/logo.png', function (req, res) {
+    res.sendFile(path.resolve('./src/client/logo/logo.png'))
+})
+
 //RECIEVE URL FROM CLIENT
 app.post('/source', async function(req, res){
     let source = req.body.url

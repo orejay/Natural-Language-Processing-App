@@ -2,55 +2,83 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>NLP</title>
-        <!-- <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300&family=Lato&family=Montserrat:wght@400;500&family=PT+Sans&family=Tangerine:wght@700&display=swap"
+            rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300&family=Lato&family=Montserrat:wght@400;500&family=PT+Sans&family=Tangerine:wght@700&display=swap"
+            rel="stylesheet">
+        <script src="https://kit.fontawesome.com/1aac26dbd0.js" crossorigin="anonymous"></script>
     </head>
-
     <body>
 
         <header>
-            <div class="">
-                Logo
+            <div class="header">
+            <div id="logo-div">
+                <img src="../logo/logo.png" alt="logo" id="logo">
             </div>
-            <div class="">
-                navigation
+            <div class="head">
+                <h1>LANGUAGE PROCESSOR</h1>
+            </div>
             </div>
         </header>
 
         <main>
             <section>
-                <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" placeholder="Name">
-                    <input type="submit" id="sub-btn" name="" value="submit">
-                </form>
+                <div id="form">
+                    <form class="" onsubmit="return handleSubmit(event)">
+                        <div id="link">
+                            <input id="url" type="text" name="input" placeholder="Input URL here...">
+                        </div>
+                        <div id="submit">
+                            <input type="submit" id="sub-btn" name="" value="Submit">
+                        </div>
+                    </form>
+            </div>
             </section>
 
             <section>
-                <strong>Form Results:</strong>
+                <div id="result"></div>
                 <div id="results">
                     <div id="agreement"></div>
                     <div id="confidence"></div>
+                    <div id="subjectivity"></div>
+                    <div id="polarity"></div>
                     <div id="irony"></div>
                 </div>
-                <div id="bad-url"></div>
             </section>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <div class="footer">
+                <div class="links">
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/oreoluwa-jaiyesimi-a96a43209/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="https://github.com/orejay" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                <div class="rights">
+                    <p>All Rights Reserved</p>
+                </div>
+            </div>
         </footer>
         <script>
-            // Check that service workers are supported
             if ('serviceWorker' in navigator) {
-                // Use the window load event to keep the page load performant
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/service-worker.js');
-                });
-            }
+                    window.addEventListener('load', () => {
+                        navigator.serviceWorker.register('/service-worker.js').then(registration => {
+                            console.log('SW registered: ', registration);
+                        }).catch(registrationError => {
+                            console.log('SW registration failed: ', registrationError);
+                        });
+                    });
+                }
         </script>
     </body>
 </html>

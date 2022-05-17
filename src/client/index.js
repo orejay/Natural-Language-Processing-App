@@ -1,4 +1,4 @@
-import { checkForUrl } from './js/Urlcheck'
+import { checkPolarity } from './js/polarityCheck'
 import { events } from './js/formHandler'
 
 
@@ -10,5 +10,5 @@ import './styles/resets.scss'
 
 export {
     events,
-    checkForUrl
+    checkPolarity
 }

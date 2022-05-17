@@ -21,6 +21,13 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/i,
+                loader: 'file-loader',
+                options: {
+                  name: '[path][name].[ext]',
+                }
             }
         ]
     },
@@ -29,6 +36,9 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
-        new WorkboxPlugin.GenerateSW()
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true
+        })
     ]
 }

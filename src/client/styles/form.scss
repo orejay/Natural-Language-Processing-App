@@ -1,12 +1,45 @@
-form {
-    border: 1px solid #545454;
-    border-radius: 3px;
-    padding: 40px;
+#form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-input {
-    padding: 5px 20px;
-    width: 100%;
-    line-height: 16px;
-    margin: 10px 0;
+#url {
+    width: 60vw;
+    height: 3em;
+    border: none;
+    border-radius: 10px;
+    background-color: #eee;
+    padding-left: 50px;
+    font-family: 'Odibee Sans', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+#url:focus {
+    outline: 0;
+}
+
+#submit {
+    display: flex;
+    justify-content: center;
+}
+
+#sub-btn {
+    border: none;
+    border-radius: 6px;
+    background-color: #26aae1;
+    height: 1.8em;
+    width: 80%;
+    color: white;
+    cursor: pointer;
+    font-family: "Abril Fatface",
+        sans-serif;
+    font-size: 1.2em;
+    font-weight: 300;
+    margin-top: 0.3em;
+}
+
+#sub-btn:hover {
+    background-color: #26eea1;
 }
