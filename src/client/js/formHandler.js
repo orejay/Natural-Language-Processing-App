@@ -1,9 +1,11 @@
-import { checkForName } from './nameChecker'
-
+import { checkForUrl } from "./Urlcheck"
 const subBtn = document.getElementById('sub-btn')
 const agreement = document.getElementById('agreement')
 const confidence = document.getElementById('confidence')
 const irony = document.getElementById('irony')
+const badUrl = document.getElementById('bad-url')
+
+
 
 const events = subBtn.addEventListener('click', function (event) {
     event.preventDefault()
@@ -36,9 +38,16 @@ const postUrl = async(url="", data={}) => {
 
 const updateUi = async (resultData) => {
     console.log(resultData)
-    agreement.innerText = resultData.agreement
-    confidence.innerText = resultData.confidence
-    irony.innerText = resultData.irony
+    if (resultData.status.code == 0) {
+        agreement.innerText = resultData.agreement
+        confidence.innerText = resultData.confidence
+        irony.innerText = resultData.irony
+    } else {
+        checkForUrl()
+        badUrl.innerText = 'Please check your link and try again'
+    }
 }
 
-export { events }
+export { events,
+        checkForUrl
+}
