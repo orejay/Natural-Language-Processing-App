@@ -18,13 +18,12 @@ app.use(cors())
 app.use(express.static('dist'))
 
 console.log(__dirname)
-console.log(apiKey)
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
     res.sendFile(path.resolve('dist/index.html'))
 })
 
+//send logo file to front end
 app.get('/logo/logo.png', function (req, res) {
     res.sendFile(path.resolve('./src/client/logo/logo.png'))
 })
@@ -37,8 +36,6 @@ app.post('/source', async function(req, res){
     const evalResult = await preEval.json()
     res.send(evalResult)
 })
-
-
 
 // designates what port the app will listen to for incoming requests
 app.listen(8080, function () {
