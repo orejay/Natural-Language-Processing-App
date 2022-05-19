@@ -1,4 +1,5 @@
 import { checkPolarity } from "./polarityCheck"
+import { checkUrl } from "./urlCheck"
 const subBtn = document.getElementById('sub-btn')
 const agreement = document.getElementById('agreement')
 const confidence = document.getElementById('confidence')
@@ -6,16 +7,21 @@ const irony = document.getElementById('irony')
 const result =document.getElementById('result')
 const subjectivity = document.getElementById('subjectivity')
 const polarity = document.getElementById('polarity')
+const errorMsg = document.getElementById('error')
 
 const events = subBtn.addEventListener('click', function (event) {
     event.preventDefault()
     // check what text was put into the form field
     let formText = document.getElementById('url').value
     console.log("::: Form Submitted :::")
-    postUrl('http://localhost:8080/source', {url: formText})
-    .then((resultData) =>{
-                    updateUi(resultData)
-                });
+    if ( checkUrl(formText) ) {
+        postUrl('http://localhost:8080/source', {url: formText})
+        .then((resultData) =>{
+                        updateUi(resultData)
+                    });
+    } else {
+        errorMsg.innerText = 'Invalid URL. Please check the link and try again...'
+    }
 })
 
 const postUrl = async(url="", data={}) => {
@@ -55,5 +61,6 @@ function checkForUrl() {
 }
 
 export { events,
-        checkPolarity
+        checkPolarity,
+        postUrl
 }

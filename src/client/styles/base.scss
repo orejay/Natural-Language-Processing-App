@@ -29,6 +29,14 @@ section {
     max-width: 70%;
 }
 
+#error {
+    margin-left: 1em;
+    font-family: 'Courier New',
+        Courier,
+        monospace ;
+    color: red;
+}
+
 #result-hd {
     font-size: 2em;
 }
