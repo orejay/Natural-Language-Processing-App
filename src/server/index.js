@@ -32,12 +32,9 @@ app.get('/logo/logo.png', function (req, res) {
 //RECIEVE URL FROM CLIENT
 app.post('/source', async function(req, res){
     let source = req.body.url
-    console.log(source)
     const apiUrl = `${baseUrl}key=${apiKey}&url=${source}&lang=en`
-    console.log(apiUrl)
     const preEval = await fetch(apiUrl)
     const evalResult = await preEval.json()
-    console.log(evalResult)
     res.send(evalResult)
 })
 
